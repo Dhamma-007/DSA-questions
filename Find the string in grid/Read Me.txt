@@ -1,0 +1,28 @@
+Intuition:
+
+The code iterates through each cell in the grid and checks whether the first letter of the target word matches the current cell.
+If it finds a match, it performs a search in eight different directions (horizontal right, horizontal left, vertical up, vertical down, and four diagonal directions) to see if the target word can be formed starting from that position.
+Approach:
+
+solve Function:
+
+The solve function is responsible for checking if the target word can be formed starting from a given position (i, j) in the grid. It does this by searching in eight different directions, accumulating characters and comparing them with the target word.
+
+Horizontal Right (hr): It checks characters to the right of the starting position.
+Horizontal Left (hl): It checks characters to the left.
+Vertical Up (vu): It checks characters above the starting position.
+Vertical Down (vd): It checks characters below.
+Diagonal Up-Left (dul), Diagonal Up-Right (dur), Diagonal Down-Left (ddl), and Diagonal Down-Right (ddr): These check characters in the respective diagonal directions.
+For each direction, it accumulates characters and compares them with the target word. If it finds a match, it returns the starting position (i, j); otherwise, it continues searching in the remaining directions.
+
+searchWord Function:
+
+The searchWord function is the entry point of the program. It iterates through each cell in the grid and checks if the first letter of the target word matches the character in the current cell. If it does, the solve function is called to check if the word can be formed starting from that cell.
+
+If a valid starting position is found, the result is not {i, j}, but rather the position where the last character of the word was matched. This is because the solve function returns the final position of the matched word.
+
+If the result is not {i, j} (indicating a successful match), the position is added to the ans vector.
+
+The ans vector accumulates the positions where the target word was found.
+
+The code effectively performs a search for the given word in all directions starting from each cell in the grid. If the word is found, the ending position of the word is added to the result vector. If the word is not found, the result vector remains empty for that particular search. Finally, the ans vector is returned, which contains all the positions where the word was found.
